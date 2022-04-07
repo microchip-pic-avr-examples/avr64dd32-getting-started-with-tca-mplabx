@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:project xmlns:ns0="http://www.netbeans.org/ns/project/1" xmlns:ns1="http://www.netbeans.org/ns/make-project/1">
+    <ns0:type>com.microchip.mplab.nbide.embedded.makeproject</ns0:type>
+    <ns0:configuration>
+        <ns1:data>
+            <name xmlns="http://www.netbeans.org/ns/make-project/1">Generating_a_Dual-slope_PWM_Signal</name>
+            <name xmlns="http://www.netbeans.org/ns/make-project/1">adapted_Generating_a_Dual-slope_PWM_Signal</name>
+            <ns1:name>Generating_a_Dual-slope_PWM_Signal</ns1:name>
+            <ns1:creation-uuid>09a06b7b-e00d-4dd7-8853-1fcb336b7c01</ns1:creation-uuid>
+            <ns1:make-project-type>0</ns1:make-project-type>
+            <ns1:c-extensions/>
+            <ns1:cpp-extensions/>
+            <ns1:header-extensions/>
+            <ns1:asminc-extensions/>
+            <ns1:sourceEncoding>ISO-8859-1</ns1:sourceEncoding>
+            <ns1:make-dep-projects/>
+            <ns1:sourceRootList/>
+            <ns1:confList>
+                <ns1:confElem>
+                    <ns1:name>free</ns1:name>
+                    <ns1:type>2</ns1:type>
+                </ns1:confElem>
+                <ns1:confElem>
+                    <ns1:name>pro</ns1:name>
+                    <ns1:type>2</ns1:type>
+                </ns1:confElem>
+            </ns1:confList>
+            <ns1:formatting>
+                <ns1:project-formatting-style>false</ns1:project-formatting-style>
+            </ns1:formatting>
+            <c-extensions xmlns="http://www.netbeans.org/ns/make-project/1">c</c-extensions>
+            <cpp-extensions xmlns="http://www.netbeans.org/ns/make-project/1"/>
+            <header-extensions xmlns="http://www.netbeans.org/ns/make-project/1"/>
+            <asminc-extensions xmlns="http://www.netbeans.org/ns/make-project/1"/>
+            <sourceEncoding xmlns="http://www.netbeans.org/ns/make-project/1">UTF-8</sourceEncoding>
+            <make-dep-projects xmlns="http://www.netbeans.org/ns/make-project/1"/>
+            <sourceRootList xmlns="http://www.netbeans.org/ns/make-project/1"/>
+            <confList xmlns="http://www.netbeans.org/ns/make-project/1">
+                <confElem>
+                    <name>free</name>
+                    <type>2</type>
+                </confElem>
+                <confElem>
+                    <name>pro</name>
+                    <type>2</type>
+                </confElem>
+            </confList>
+            <formatting xmlns="http://www.netbeans.org/ns/make-project/1">
+                <project-formatting-style>false</project-formatting-style>
+            </formatting>
+        </ns1:data>
+    </ns0:configuration>
+</ns0:project>

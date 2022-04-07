@@ -1,45 +1,187 @@
-<!-- Please do not change this logo with link -->
-
 [![MCHP](images/microchip.png)](https://www.microchip.com)
 
-# Update the title for avr64dd32-getting-started-with-tca-mplabx here
+# Timer/Counter Type A (TCA) Initialized in Three Different Applications Using the AVR64DD32 Microcontroller
 
-<!-- This is where the introduction to the example goes, including mentioning the peripherals used -->
+<br>The repository contains three MPLAB® X projects:
+
+1.  [Generating a Dual Slope PWM Signal](#1-generating-a-dual-slope-pwm-signal) – Initializing the Timer/Counter type A (TCA) in Dual Slope mode to generate a 16-bit Pulse-Width Modulation (PWM) signal.
+2.  [Generating Two PWM Signals in Split Mode](#2-generating-two-pwm-signals-in-split-mode) – Initializing the Timer/Counter type A (TCA) in Split mode to generate two single slope 8-bit Pulse-Width Modulation (PWM) signals.
+3.  [Using Periodic Interrupt Mode](#3-using-periodic-interrupt-mode) – Initializing the Timer/Counter type A (TCA) in Single mode to work as a counter.
 
 ## Related Documentation
 
-<!-- Any information about an application note or tech brief can be linked here. Use unbreakable links!
-     In addition a link to the device family landing page and relevant peripheral pages as well:
-     - [AN3381 - Brushless DC Fan Speed Control Using Temperature Input and Tachometer Feedback](https://microchip.com/00003381/)
-     - [PIC18F-Q10 Family Product Page](https://www.microchip.com/design-centers/8-bit/pic-mcus/device-selection/pic18f-q10-product-family) -->
+More details and code examples on the AVR64DD32 can be found at the following links:
+
+- [AVR64DD32 Product Page](https://www.microchip.com/wwwproducts/en/AVR64DD32)
+- [AVR64DD32 Code Examples on GitHub](https://github.com/microchip-pic-avr-examples?q=AVR64DD32)
+- [AVR64DD32 Project Examples in START](https://start.atmel.com/#examples/AVR64DD32CuriosityNano)
 
 ## Software Used
 
-<!-- All software used in this example must be listed here. Use unbreakable links!
-     - MPLAB® X IDE 5.30 or newer [(microchip.com/mplab/mplab-x-ide)](http://www.microchip.com/mplab/mplab-x-ide)
-     - MPLAB® XC8 2.10 or a newer compiler [(microchip.com/mplab/compilers)](http://www.microchip.com/mplab/compilers)
-     - MPLAB® Code Configurator (MCC) 3.95.0 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-     - MPLAB® Code Configurator (MCC) Device Libraries PIC10 / PIC12 / PIC16 / PIC18 MCUs [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-     - Microchip PIC18F-Q Series Device Support (1.4.109) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/) -->
-
-- MPLAB® X IDE 6.0.0 or newer [(MPLAB® X IDE 6.0)](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_MPAE_Examples&utm_content=avr64dd32-getting-started-with-tca-mplabx-github)
-- MPLAB® XC8 2.36.0 or newer compiler [(MPLAB® XC8 2.36)](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_MPAE_Examples&utm_content=avr64dd32-getting-started-with-tca-mplabx-github)
+- [MPLAB® X IDE](http://www.microchip.com/mplab/mplab-x-ide) v6.00 or newer
+- [MPLAB® XC8](http://www.microchip.com/mplab/compilers) v2.36 or newer
+- [AVR-Dx Series Device Pack](https://packs.download.microchip.com/) v2.1.152 or newer
 
 ## Hardware Used
 
-<!-- All hardware used in this example must be listed here. Use unbreakable links!
-     - PIC18F47Q10 Curiosity Nano [(DM182029)](https://www.microchip.com/Developmenttools/ProductDetails/DM182029)
-     - Curiosity Nano Base for Click boards™ [(AC164162)](https://www.microchip.com/Developmenttools/ProductDetails/AC164162)
-     - POT Click board™ [(MIKROE-3402)](https://www.mikroe.com/pot-click) -->
-
-## Setup
-
-<!-- Explain how to connect hardware and set up software. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
+- The AVR64DD32 Curiosity Nano Development Board is used as a test platform
+  <br><img src="images/AVR64DD32.PNG" width="500">
+- Saleae Logic Analyzer
 
 ## Operation
 
-<!-- Explain how to operate the example. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
+To program the Curiosity Nano board with this MPLAB® X project, follow the steps provided in the [How to Program the Curiosity Nano Board](#how-to-program-the-curiosity-nano-board) chapter.<br><br>
 
-## Summary
+## 1. Generating a Dual Slope PWM Signal
 
-<!-- Summarize what the example has shown -->
+This code example shows how to initialize the TCA in Dual Slope mode to generate a 16-bit PWM signal with a 1 kHz frequency and 50% duty cycle on a GPIO pin.
+
+### 1.1 Setup
+
+The following configurations must be made for this project:
+
+- System clock is 4 MHz
+
+- TCA0:
+  - Clock selection: System clock/4
+  - Timer mode: 16-bit (Normal)
+  - 1 kHz frequency and 50% duty cycle
+  - Waveform Generation mode: Dual Slope PWM, overflow on BOTTOM
+  - Output on channel 0
+
+- Logic Analyzer:
+  - connected on PC0 pin
+
+|   Pin   |   Configuration   |
+| :-----: | :---------------: |
+|   PC0   |   Digital output  |
+
+
+### 1.2 Demo
+
+- The PWM signal generated by the TCA0 can be seen in the following image
+<br><img src="images/Generating_a_Dual-slope_PWM_Signal_Demo.PNG" width="1200">
+
+The waveform period is approximately 1 kHz and its duty cycle is 50%.
+
+### 1.3 Summary
+
+This code example shows how to initialize the TCA in Dual Slope mode to generate a 16-bit PWM signal with a 1 kHz frequency and 50% duty cycle.<br><br>
+
+[Back to top](#timercounter-type-a-tca-initialized-in-three-different-applications-using-the-avr64dd32-microcontroller)
+
+## 2. Generating Two PWM Signals in Split Mode
+
+This code example shows how to initialize the TCA in Split mode to generate two single slope 8-bit PWM signals on two GPIO pins. The signals will be configured with different frequencies and different duty cycles, as follows:
+- 1.000 kHz PWM signal with 50% duty cycle
+- 3.333 kHz PWM signal with 33% duty cycle
+
+### 2.1 Setup
+
+The following configurations must be made for this project:
+
+- System clock is 4 MHz
+
+- TCA0:
+  - Clock selection: System clock/16
+  - Timer mode: 8-bit (Split)
+  - Signal with output on PC0 has 1.000 kHz frequency and 50% duty cycle
+  - Signal with output on PC3 has 3.333 kHz frequency and 33% duty cycle
+  - Output on channel 0
+  - Output on channel 3
+
+- Logic Analyzer:
+  - connected on PC0 and PC3
+
+|   Pin   |  Configuration    |
+| :-----: | :---------------: |
+|   PC0   |   Digital output  |
+|   PC3   |   Digital output  |
+
+### 2.2 Demo
+
+- The PWM signals generated by the TCA0 can be seen in the following image
+<br><img src="images/Generating_Two_PWM_Signals_in_Split_Mode_Demo.PNG" width="1200">
+
+The first waveform (PC0) frequency is approximately 1.000 kHz and its duty cycle is 50%.<br>
+The second waveform (PC3) frequency is approximately 3.333 kHz and its duty cycle is 33%.
+
+### 2.3 Summary
+
+This code example shows how to initialize the TCA in Split mode to generate two single slope 8-bit PWM signals on two GPIO pins, with independent duty cycles and frequencies.<br><br>
+
+[Back to top](#timercounter-type-a-tca-initialized-in-three-different-applications-using-the-avr64dd32-microcontroller)
+
+## 3. Using Periodic Interrupt Mode
+
+This use case shows how to initialize the TCA in Single mode to work as a counter. The counter overflows every 250 ms and triggers an interrupt, which toggles the LED pin.
+
+### 3.1 Setup
+
+The following configurations must be made for this project:
+
+- System clock is 4 MHz
+
+- Global interrupts enabled
+
+- TCA0:
+  - Clock selection: System clock/64
+  - Timer mode: 16-bit (Normal)
+  - Timer overflows every 250 ms
+  - Enable overflow interrupt
+
+- Logic Analyzer:
+  - connected on the PF5 pin
+
+|   Pin        |  Configuration    |
+| :----------: | :---------------: |
+|   PF5 (LED)  |   Digital output  |
+
+
+### 3.2 Demo
+
+- The digital value of the PF5 pin toggled by the TCA0 overflow interrupt can be seen in the following image
+<br><img src="images/Using_Periodic_Interrupt_Mode_Demo.PNG" width="1000">
+
+The value of the pin changes every 250 ms.
+
+### 3.3 Summary
+
+This code example shows how to initialize the TCA as a counter to trigger an overflow interrupt every 250 ms, toggling a GPIO pin (LED) in the Interrupt Service Routine (ISR). <br><br>
+
+[Back to top](#timercounter-type-a-tca-initialized-in-three-different-applications-using-the-avr64dd32-microcontroller)
+
+#
+
+##  How to Program the Curiosity Nano Board
+
+This chapter demonstrates how to use the MPLAB® X IDE to program an AVR® device with an Example_Project.X. This can be applied to any other projects.
+
+1.  Connect the board to the PC.
+
+2.  Open the Example_Project.X project in MPLAB® X IDE.
+
+3.  Set the Example_Project.X project as main project.
+    <br>Right click the project in the **Projects** tab and click **Set as Main Project**.
+    <br><img src="images/Program_Set_as_Main_Project.PNG" width="600">
+
+4.  Clean and build the Example_Project.X project.
+    <br>Right click the **Example_Project.X** project and select **Clean and Build**.
+    <br><img src="images/Program_Clean_and_Build.PNG" width="600">
+
+5.  Select **AVRxxxxx Curiosity Nano** in the Connected Hardware Tool section of the project settings:
+    <br>Right click the project and click **Properties**.
+    <br>Click the arrow under the Connected Hardware Tool.
+    <br>Select **AVRxxxxx Curiosity Nano** (click the **SN**), click **Apply** and then **OK**.
+    <br><img src="images/Program_Tool_Selection.PNG" width="600">
+
+6.  Program the project to the board.
+    <br>Right click the project and then **Make and Program Device**.
+    <br><img src="images/Program_Make_and_Program_Device.PNG" width="600">
+
+<br>
+
+- [Back to 1. Generating a Dual Slope PWM Signal](#1-generating-a-dual-slope-pwm-signal)
+- [Back to 2. Generating Two PWM Signals in Split Mode](#2-generating-two-pwm-signals-in-split-mode)
+- [Back to 3. Using Periodic Interrupt Mode](#3-using-periodic-interrupt-mode)
+- [Back to top](#timercounter-type-a-tca-initialized-in-three-different-applications-using-the-avr64dd32-microcontroller)
